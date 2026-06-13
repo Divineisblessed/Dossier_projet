@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 #pour les
 Flask==3.1.3
 Flak-SQLAlchemy==3.1.1
 Flask-login==0.6.3
 pymysql==1.0.3
+=======
+
+Flask==3.1.3
+Flask-SQLAlquemy==3.1.1
+Flask-Login==0.6.3
+pymysql==1.1.0
+>>>>>>> f2ff8c6a13fd6b980bba0530cd1a33905e3cdbf6
