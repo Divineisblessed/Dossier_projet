@@ -27,44 +27,44 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
     
-    class Habit(db.Model):
-        __tablename__= 'habits'
-        id  = db.Column(db.Integer, primary_key=True)
-        user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-        goal_id = db.Column(db.Integer, db.ForeignKey('goals.id'), nullable=False)
-        title = db.Column(db.String(150), nullable=False)
-        why = db.Column(db.String(500), nullable=True)
-        excepted_result = db.Column(db.String(500), nullable=True)
-        schedule_days = db.Column(db.String(100), nullable=True)  # date ou on a creer la tache en question
-        schedule_time = db.Column(db.String(100), nullable=True)  # heure ou on a creer la tache en question
-        duration = db.Column(db.Integer, nullable=True)  # durée en minutes
-        logs = db.relationship('HabitLog', backref='habit', lazy=True, cascade="all, delete-orphan")
-        max_streak = db.Column(db.Integer, default=0)
-        current_streak = db.Column(db.Integer, default=0)
+class Habit(db.Model):
+    __tablename__= 'habits'
+    id  = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    goal_id = db.Column(db.Integer, db.ForeignKey('goals.id'), nullable=False)
+    title = db.Column(db.String(150), nullable=False)
+    why = db.Column(db.String(500), nullable=True)
+    excepted_result = db.Column(db.String(500), nullable=True)
+    schedule_days = db.Column(db.String(100), nullable=True)  # date ou on a creer la tache en question
+    schedule_time = db.Column(db.String(100), nullable=True)  # heure ou on a creer la tache en question
+    duration = db.Column(db.Integer, nullable=True)  # durée en minutes
+    logs = db.relationship('HabitLog', backref='habit', lazy=True, cascade="all, delete-orphan")
+    max_streak = db.Column(db.Integer, default=0)
+    current_streak = db.Column(db.Integer, default=0)
 
-    class goal(db.Model):
-        __tablename__ = 'goals'
-        id = db.Column(db.Integer, primary_key=True)
-        user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-        title = db.Column(db.String(150), nullable=False)
-        description = db.Column(db.String(500), nullable=True)
-        created_at = db.Column(db.DateTime, default=datetime.utcnow)
-        habits = db.relationship('Habit', backref='goal', lazy=True, cascade="all, delete-orphan")
+class goal(db.Model):
+    __tablename__ = 'goals'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    title = db.Column(db.String(150), nullable=False)
+    description = db.Column(db.String(500), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    habits = db.relationship('Habit', backref='goal', lazy=True, cascade="all, delete-orphan")
 
-    class HabitLog(db.Model):
-        __tablename__ = 'habit_logs'
-        id = db.Column(db.Integer, primary_key=True)
-        habit_id = db.Column(db.Integer, db.ForeignKey('habits.id'), nullable=False)
-        date_completed = db.Column(db.DateTime, default=datetime.utcnow)
+class HabitLog(db.Model):
+    __tablename__ = 'habit_logs'
+    id = db.Column(db.Integer, primary_key=True)
+    habit_id = db.Column(db.Integer, db.ForeignKey('habits.id'), nullable=False)
+    date_completed = db.Column(db.DateTime, default=datetime.utcnow)
 
-    class TodoItem(db.Model):
-        __tablename__ = 'todo_items'
-        id = db.Column(db.Integer, primary_key=True)
-        user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-        title = db.Column(db.String(150), nullable=False)
-        description = db.Column(db.String(500), nullable=True)
-        is_completed = db.Column(db.Boolean, default=False)
-        created_at = db.Column(db.DateTime, default=datetime.utcnow)
+class TodoItem(db.Model):
+    __tablename__ = 'todo_items'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    title = db.Column(db.String(150), nullable=False)
+    description = db.Column(db.String(500), nullable=True)
+    is_completed = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 =======
 #git checkout branch.
 #git push origine branch name.
