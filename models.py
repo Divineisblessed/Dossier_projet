@@ -1,6 +1,5 @@
 #notre sql
 #déclarer des Tables associés à la base de donnée dans config.py 
-<<<<<<< HEAD
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -65,7 +64,3 @@ class TodoItem(db.Model):
     description = db.Column(db.String(500), nullable=True)
     is_completed = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-=======
-#git checkout branch.
-#git push origine branch name.
->>>>>>> f2ff8c6a13fd6b980bba0530cd1a33905e3cdbf6
